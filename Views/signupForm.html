@@ -1,0 +1,25 @@
+<div class="signUp">
+    <img src="./Images/spotify-transparent.png" class="main_img" alt="spotify"/>
+    <div class="facebookButton">
+        <button>SIGN UP WITH FACEBOOK</button>
+    </div>
+    <hr />
+    <div>
+        <p class="signUpEmail">Sign up with your email address</p>
+        <form method="post" action="./Model/users.php">
+            <input type="text" name="email" placeholder="name@domain.com" required /><br />
+            <input type="text" name="first_name" placeholder="First Name..." required /><br />
+            <input type="text" name="last_name" placeholder="First Name..." required /><br />
+            <span>Date of birth:</span><br />
+            <div class="date_of_birth">
+                <select name="month" id="month" placeholder="Month">
+                </select>
+                <select name="day" id="day" palceholder="Day">
+                </select>
+                <select name="year" id="year" palceholder="Day">
+                </select>
+            </div>
+            <button name="submit" type="submit" id="submit">Submit!</button>
+        </form>
+    </div>
+</div>
