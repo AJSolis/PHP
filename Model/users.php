@@ -13,14 +13,13 @@ if (!empty($_POST) && is_array($_POST)) {
   $lastName      = $_POST['last_name'];
   $email         = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
 
-  if (!$email || !ctype_alpha($firstName) || !ctype_alpha($lastName))
-  {
+  if (!$email || !ctype_alpha($firstName) || !ctype_alpha($lastName)) {
     return false;
   }
 
   $insertSql = "INSERT INTO users (first_name, last_name, date_of_birth, email, timestamp) VALUES ('$firstName', '$lastName', '$date_of_birth', '$email', NOW())";
 
-  if ($conn->query($insertSql) === TRUE) {
+  if ($conn->query($insertSql) === true) {
     echo "New record created successfully";
   } else {
     echo "Error: " . $insertSql . "<br>" . $conn->error;
