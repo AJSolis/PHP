@@ -1,27 +1,35 @@
 <template>
-  <div class="about">
-    <h1>Users Page</h1>
-  </div>
-</template>
-
-<script>
-import axios from 'axios';
-
-export default {
+    <div>
+      <h1>Users List</h1>
+      <ul v-if="users.length">
+        <li v-for="user in users" :key="user.id">{{ user.first_name }} {{ user.last_name }}</li>
+      </ul>
+      <p v-else>No users found.</p>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        users: []
+      };
+    },
     methods: {
-        fetchUsers()
-        {
-            // Send the form data using axios
-            axios.fetch('http://localhost/Model/users.php', formData)
-                .then(response => {
-                    if (response.status == 200) {
-                        this.$router.push('/success');
-                    }
-                })
-                .catch(error => {
-                    console.error('There was an error submitting the form:', error);
-                });
-        }
+      fetchUsers() {
+        fetch('http://localhost/Model/fetchUsers.php')
+          .then(response => response.json())
+          .then(data => {
+            this.users = data;
+          })
+          .catch(error => {
+            console.error("Error fetching users:", error);
+          });
+      }
+    },
+    mounted() {
+      this.fetchUsers();
     }
-};
-</script>
+  };
+  </script>
+  
